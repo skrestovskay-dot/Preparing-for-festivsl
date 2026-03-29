@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Phonics Warm-Up | Let's Talk About Festivals! | Grade 3 ESL</title>
+    <title>Phonics Warm-Up | Funny Festival Speech | Grade 3 ESL</title>
     <style>
         * {
             margin: 0;
@@ -23,9 +23,60 @@
             margin: 0 auto;
         }
 
+        /* Funny characters floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(10px); }
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            75% { transform: rotate(-5deg); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes jump {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .float-emoji {
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        .bounce-emoji {
+            animation: bounce 2s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        .wiggle-emoji {
+            animation: wiggle 1.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        .spin-emoji {
+            animation: spin 4s linear infinite;
+            display: inline-block;
+        }
+
         .header {
             text-align: center;
             margin-bottom: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 20px;
+            border-radius: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .header h1 {
@@ -42,6 +93,29 @@
             font-size: 0.9rem;
         }
 
+        .funny-characters {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .funny-char {
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 60px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .funny-char:hover {
+            transform: scale(1.2);
+            background: #f0f0f0;
+        }
+
         .exercise-card {
             background: white;
             border-radius: 50px;
@@ -49,6 +123,22 @@
             margin-bottom: 20px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exercise-card::before {
+            content: "🎉";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 3rem;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-5px);
         }
 
         .exercise-header {
@@ -104,11 +194,17 @@
             cursor: pointer;
             transition: all 0.3s;
             min-width: 140px;
+            position: relative;
+            overflow: hidden;
         }
 
         .sound-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .sound-card:active {
+            transform: scale(0.98);
         }
 
         .sound-letter {
@@ -135,10 +231,11 @@
             cursor: pointer;
             transition: all 0.3s;
             min-width: 200px;
+            position: relative;
         }
 
         .phrase-card:hover {
-            transform: scale(1.02);
+            transform: scale(1.02) translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
@@ -168,12 +265,14 @@
 
         .lip-card:hover {
             border-color: #f5576c;
-            transform: translateY(-5px);
+            transform: translateY(-10px) rotate(2deg);
+            background: #fff0f5;
         }
 
         .lip-emoji {
             font-size: 3rem;
             margin-bottom: 10px;
+            display: inline-block;
         }
 
         .lip-sound {
@@ -189,6 +288,7 @@
             padding: 25px;
             text-align: center;
             margin: 15px 0;
+            position: relative;
         }
 
         .tongue-text {
@@ -208,6 +308,12 @@
             cursor: pointer;
             font-family: inherit;
             margin: 5px;
+            transition: all 0.3s;
+        }
+
+        .repeat-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         .progress-container {
@@ -253,6 +359,7 @@
 
         .complete-btn:hover {
             transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
         .celebration {
@@ -275,11 +382,6 @@
         .festival-teaser h3 {
             font-size: 1.8rem;
             margin-bottom: 15px;
-        }
-
-        .festival-teaser p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
         }
 
         .festival-buttons {
@@ -347,6 +449,33 @@
             margin: 5px;
         }
 
+        /* Funny GIF replacements */
+        .funny-gif {
+            font-size: 3rem;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .funny-gif:hover {
+            transform: scale(1.3);
+        }
+
+        .dancing-monkey {
+            animation: bounce 1s ease-in-out infinite;
+            display: inline-block;
+            font-size: 2.5rem;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .shake {
+            animation: shake 0.3s ease-in-out;
+        }
+
         @media (max-width: 700px) {
             .exercise-card {
                 padding: 15px;
@@ -360,6 +489,10 @@
             .festival-teaser h3 {
                 font-size: 1.4rem;
             }
+            .funny-char {
+                font-size: 1.5rem;
+                padding: 5px 12px;
+            }
         }
     </style>
 </head>
@@ -368,119 +501,135 @@
     <div class="header">
         <h1>🗣️ Let's Warm Up Our Mouth! 🎤</h1>
         <p>Today we will learn about <span class="festival-word">🎭 FESTIVALS</span> around the world!</p>
+        
+        <!-- Funny characters for good mood -->
+        <div class="funny-characters">
+            <div class="funny-char" onclick="playFunnySound('monkey')">
+                <span class="float-emoji">🐒</span> <span class="wiggle-emoji">🙈</span> <span class="bounce-emoji">🙉</span>
+            </div>
+            <div class="funny-char" onclick="playFunnySound('dance')">
+                <span class="spin-emoji">💃</span> <span class="float-emoji">🕺</span>
+            </div>
+            <div class="funny-char" onclick="playFunnySound('alien')">
+                <span class="bounce-emoji">👽</span> <span class="wiggle-emoji">🤪</span>
+            </div>
+            <div class="funny-char" onclick="playFunnySound('cat')">
+                <span class="float-emoji">🐱</span> <span class="spin-emoji">🐶</span> <span class="bounce-emoji">🐭</span>
+            </div>
+        </div>
     </div>
 
-    <!-- Exercise 1: Breathing -->
+    <!-- Exercise 1: Breathing with funny animal -->
     <div class="exercise-card" id="exercise1">
         <div class="exercise-header">
             <div class="exercise-number">1</div>
-            <div class="exercise-title">🌬️ Breathing Exercise (Дыхание)</div>
-            <div class="sound-icon" onclick="speak('Breathe in through your nose, breathe out through your mouth. Slowly and calmly.')">🔊</div>
+            <div class="exercise-title">🌬️ Breathing with Funny Frog 🐸</div>
+            <div class="sound-icon" onclick="speak('Breathe in through your nose, breathe out through your mouth. Like a happy frog!')">🔊</div>
         </div>
         <div class="exercise-content" style="text-align: center;">
-            <p>💨 Breathe in... and out... Let's get ready for <strong class="festival-word">FESTIVALS</strong>! 💨</p>
+            <p>💨 Breathe like a <span class="float-emoji" style="font-size:2rem;">🐸</span> frog! In... and out... Let's get ready for <strong class="festival-word">FESTIVALS</strong>! 💨</p>
             <div class="breathing-circle" id="breathingCircle" onclick="startBreathing()">
-                <div class="breathing-text" style="color:white; font-weight:bold;">Breathe</div>
+                <div class="breathing-text" style="color:white; font-weight:bold;">🐸 Ribbit!<br>Breathe</div>
             </div>
-            <p>👃 Inhale through your nose... (1,2,3,4)<br>👄 Exhale through your mouth... (1,2,3,4,5,6)</p>
-            <button class="repeat-btn" onclick="startBreathing()">Start Breathing 🧘</button>
+            <p>👃 Inhale... (1,2,3,4) like a frog puffing up!<br>👄 Exhale... (1,2,3,4,5,6) like a frog relaxing!</p>
+            <button class="repeat-btn" onclick="startBreathing()">Start Breathing with Frog 🐸</button>
         </div>
     </div>
 
-    <!-- Exercise 2: Vowel Sounds with Festival Words -->
+    <!-- Exercise 2: Vowel Sounds with Funny Animals -->
     <div class="exercise-card" id="exercise2">
         <div class="exercise-header">
             <div class="exercise-number">2</div>
-            <div class="exercise-title">🎵 Vowel Sounds (Гласные) + Festival Words</div>
-            <div class="sound-icon" onclick="speak('Let's practice vowel sounds with festival words! A, E, I, O, U. Repeat after me!')">🔊</div>
+            <div class="exercise-title">🎵 Vowel Sounds + Funny Animals 🦁</div>
+            <div class="sound-icon" onclick="speak('Let's practice vowel sounds with funny animals! A, E, I, O, U. Repeat after me!')">🔊</div>
         </div>
         <div class="exercise-content">
             <div class="sound-grid">
-                <div class="sound-card" onclick="saySound('A a', 'Apple', '/æ/', 'Apple apple apple', '🎭 FESTIVAL')">
-                    <div class="sound-letter">A a</div>
+                <div class="sound-card" onclick="saySoundWithAnimal('A a', 'Apple', '/æ/', 'Apple apple apple', '🐒 Monkey says A!')">
+                    <div class="sound-letter">A a <span class="float-emoji">🐒</span></div>
                     <div class="sound-word">Apple 🍎</div>
                     <div class="sound-picture">/æ/</div>
                 </div>
-                <div class="sound-card" onclick="saySound('E e', 'Elephant', '/e/', 'Elephant elephant elephant', '🎪 CELEBRATION')">
-                    <div class="sound-letter">E e</div>
+                <div class="sound-card" onclick="saySoundWithAnimal('E e', 'Elephant', '/e/', 'Elephant elephant elephant', '🐘 Elephant says E!')">
+                    <div class="sound-letter">E e <span class="wiggle-emoji">🐘</span></div>
                     <div class="sound-word">Elephant 🐘</div>
                     <div class="sound-picture">/e/</div>
                 </div>
-                <div class="sound-card" onclick="saySound('I i', 'Igloo', '/ɪ/', 'Igloo igloo igloo', '🎉 FESTIVAL')">
-                    <div class="sound-letter">I i</div>
-                    <div class="sound-word">Igloo 🏠</div>
+                <div class="sound-card" onclick="saySoundWithAnimal('I i', 'Iguana', '/ɪ/', 'Iguana iguana iguana', '🦎 Iguana says I!')">
+                    <div class="sound-letter">I i <span class="bounce-emoji">🦎</span></div>
+                    <div class="sound-word">Iguana 🦎</div>
                     <div class="sound-picture">/ɪ/</div>
                 </div>
-                <div class="sound-card" onclick="saySound('O o', 'Octopus', '/ɒ/', 'Octopus octopus octopus', '🎊 HOLIDAY')">
-                    <div class="sound-letter">O o</div>
+                <div class="sound-card" onclick="saySoundWithAnimal('O o', 'Octopus', '/ɒ/', 'Octopus octopus octopus', '🐙 Octopus says O!')">
+                    <div class="sound-letter">O o <span class="spin-emoji">🐙</span></div>
                     <div class="sound-word">Octopus 🐙</div>
                     <div class="sound-picture">/ɒ/</div>
                 </div>
-                <div class="sound-card" onclick="saySound('U u', 'Umbrella', '/ʌ/', 'Umbrella umbrella umbrella', '🎈 PARADE')">
-                    <div class="sound-letter">U u</div>
-                    <div class="sound-word">Umbrella ☔</div>
+                <div class="sound-card" onclick="saySoundWithAnimal('U u', 'Umbrella bird', '/ʌ/', 'Umbrella umbrella umbrella', '🐦 Umbrella bird says U!')">
+                    <div class="sound-letter">U u <span class="float-emoji">🐦</span></div>
+                    <div class="sound-word">Umbrella Bird ☔🐦</div>
                     <div class="sound-picture">/ʌ/</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Exercise 3: Festival Words and Sounds -->
+    <!-- Exercise 3: Festival Words with Funny Pictures -->
     <div class="exercise-card" id="exercise3">
         <div class="exercise-header">
             <div class="exercise-number">3</div>
-            <div class="exercise-title">🎪 Festival Words (Слова о фестивалях) - 10 words</div>
-            <div class="sound-icon" onclick="speak('Let's learn festival words! Mask, bells, tomato, altar, costume, parade, music, dance, flower, spirit. Repeat!')">🔊</div>
+            <div class="exercise-title">🎪 Festival Words + Silly Characters 🤪</div>
+            <div class="sound-icon" onclick="speak('Let's learn festival words with silly characters! Mask, bells, tomato, altar, costume, parade, music, dance, flower, spirit. Repeat!')">🔊</div>
         </div>
         <div class="exercise-content">
             <div class="sound-grid">
-                <div class="sound-card" onclick="sayFestivalWord('Mask', 'Mask', '/mæsk/', 'People wear masks at festivals! 🎭')">
-                    <div class="sound-letter">🎭</div>
+                <div class="sound-card" onclick="sayFestivalWordFunny('Mask', 'Mask', '/mæsk/', '🎭 Wear a funny mask! BOO! 👻')">
+                    <div class="sound-letter">🎭 <span class="wiggle-emoji">👻</span></div>
                     <div class="sound-word">Mask</div>
                     <div class="sound-picture">/mæsk/</div>
                 </div>
-                <div class="sound-card" onclick="sayFestivalWord('Bells', 'Bells', '/belz/', 'Bells make loud noises! 🔔')">
-                    <div class="sound-letter">🔔</div>
+                <div class="sound-card" onclick="sayFestivalWordFunny('Bells', 'Bells', '/belz/', '🔔 Ding dong! Silly bells! 🎄')">
+                    <div class="sound-letter">🔔 <span class="bounce-emoji">🛷</span></div>
                     <div class="sound-word">Bells</div>
                     <div class="sound-picture">/belz/</div>
                 </div>
-                <div class="sound-card" onclick="sayFestivalWord('Tomato', 'Tomato', '/təˈmɑːtəʊ/', 'People throw tomatoes in Spain! 🍅')">
-                    <div class="sound-letter">🍅</div>
+                <div class="sound-card" onclick="sayFestivalWordFunny('Tomato', 'Tomato', '/təˈmɑːtəʊ/', '🍅 Squishy tomato! SPLAT! 💥')">
+                    <div class="sound-letter">🍅 <span class="float-emoji">💥</span></div>
                     <div class="sound-word">Tomato</div>
                     <div class="sound-picture">/təˈmɑːtəʊ/</div>
                 </div>
-                <div class="sound-card" onclick="sayFestivalWord('Altar', 'Altar', '/ˈɔːltə/', 'Families make altars with flowers! 🕯️')">
-                    <div class="sound-letter">🕯️</div>
+                <div class="sound-card" onclick="sayFestivalWordFunny('Altar', 'Altar', '/ˈɔːltə/', '🕯️ Magic altar with flowers! ✨')">
+                    <div class="sound-letter">🕯️ <span class="spin-emoji">✨</span></div>
                     <div class="sound-word">Altar</div>
                     <div class="sound-picture">/ˈɔːltə/</div>
                 </div>
-                <div class="sound-card" onclick="sayFestivalWord('Costume', 'Costume', '/ˈkɒstjuːm/', 'Kukeri wear scary costumes! 👘')">
-                    <div class="sound-letter">👘</div>
+                <div class="sound-card" onclick="sayFestivalWordFunny('Costume', 'Costume', '/ˈkɒstjuːm/', '👘 Funny costume! Look at me! 🤡')">
+                    <div class="sound-letter">👘 <span class="wiggle-emoji">🤡</span></div>
                     <div class="sound-word">Costume</div>
                     <div class="sound-picture">/ˈkɒstjuːm/</div>
                 </div>
-                <div class="sound-card" onclick="sayFestivalWord('Parade', 'Parade', '/pəˈreɪd/', 'There is a big parade at the festival! 🎺')">
-                    <div class="sound-letter">🎺</div>
+                <div class="sound-card" onclick="sayFestivalWordFunny('Parade', 'Parade', '/pəˈreɪd/', '🎺 March in the parade! Toot toot! 🎵')">
+                    <div class="sound-letter">🎺 <span class="bounce-emoji">🎵</span></div>
                     <div class="sound-word">Parade</div>
                     <div class="sound-picture">/pəˈreɪd/</div>
                 </div>
-                <div class="sound-card" onclick="sayFestivalWord('Music', 'Music', '/ˈmjuːzɪk/', 'I love festival music! 🎵')">
-                    <div class="sound-letter">🎵</div>
+                <div class="sound-card" onclick="sayFestivalWordFunny('Music', 'Music', '/ˈmjuːzɪk/', '🎵 Dance to the music! Boogie woogie! 💃')">
+                    <div class="sound-letter">🎵 <span class="float-emoji">💃</span></div>
                     <div class="sound-word">Music</div>
                     <div class="sound-picture">/ˈmjuːzɪk/</div>
                 </div>
-                <div class="sound-card" onclick="sayFestivalWord('Dance', 'Dance', '/dɑːns/', 'People dance at the festival! 💃')">
-                    <div class="sound-letter">💃</div>
+                <div class="sound-card" onclick="sayFestivalWordFunny('Dance', 'Dance', '/dɑːns/', '💃 Dance like a chicken! 🐔🕺')">
+                    <div class="sound-letter">💃 <span class="spin-emoji">🐔</span></div>
                     <div class="sound-word">Dance</div>
                     <div class="sound-picture">/dɑːns/</div>
                 </div>
-                <div class="sound-card" onclick="sayFestivalWord('Flower', 'Flower', '/ˈflaʊə/', 'Marigold flowers for Day of the Dead! 🌼')">
-                    <div class="sound-letter">🌼</div>
+                <div class="sound-card" onclick="sayFestivalWordFunny('Flower', 'Flower', '/ˈflaʊə/', '🌼 Smell the flower! ACHOO! 🤧')">
+                    <div class="sound-letter">🌼 <span class="wiggle-emoji">🤧</span></div>
                     <div class="sound-word">Flower</div>
                     <div class="sound-picture">/ˈflaʊə/</div>
                 </div>
-                <div class="sound-card" onclick="sayFestivalWord('Spirit', 'Spirit', '/ˈspɪrɪt/', 'Kukeri scare away bad spirits! 👻')">
-                    <div class="sound-letter">👻</div>
+                <div class="sound-card" onclick="sayFestivalWordFunny('Spirit', 'Spirit', '/ˈspɪrɪt/', '👻 Boo! A friendly spirit! Hi! 👋')">
+                    <div class="sound-letter">👻 <span class="float-emoji">👋</span></div>
                     <div class="sound-word">Spirit</div>
                     <div class="sound-picture">/ˈspɪrɪt/</div>
                 </div>
@@ -488,100 +637,94 @@
         </div>
     </div>
 
-    <!-- Exercise 4: Festival Phrases -->
+    <!-- Exercise 4: Funny Festival Phrases -->
     <div class="exercise-card" id="exercise4">
         <div class="exercise-header">
             <div class="exercise-number">4</div>
-            <div class="exercise-title">🎉 Festival Phrases (Фразы о фестивалях) - 8 phrases</div>
-            <div class="sound-icon" onclick="speak('Let's practice phrases about festivals! Repeat each phrase three times!')">🔊</div>
+            <div class="exercise-title">😂 Funny Festival Phrases 😂</div>
+            <div class="sound-icon" onclick="speak('Let's practice funny phrases about festivals! Repeat with a smile!')">🔊</div>
         </div>
         <div class="exercise-content">
             <div class="sound-grid">
-                <div class="phrase-card" onclick="sayPhrase('I love festivals!', 'I love festivals! I love festivals! Festivals are fun!')">
-                    <div class="phrase-text">🎪 I love festivals!</div>
+                <div class="phrase-card" onclick="sayFunnyPhrase('I love festivals!', 'I love festivals! Yay yay yay! Festivals are the best! 🎉')">
+                    <div class="phrase-text">🎪 I love festivals! <span class="float-emoji">🎉</span></div>
                 </div>
-                <div class="phrase-card" onclick="sayPhrase('Let\'s go to a festival!', 'Let\'s go to a festival! Let\'s go! Let\'s celebrate!')">
-                    <div class="phrase-text">🚀 Let's go to a festival!</div>
+                <div class="phrase-card" onclick="sayFunnyPhrase('Let\'s party!', 'Let\'s party! Woohoo! Dance dance dance! 🕺💃')">
+                    <div class="phrase-text">🎈 Let's party! <span class="spin-emoji">🕺</span></div>
                 </div>
-                <div class="phrase-card" onclick="sayPhrase('Festivals are fun!', 'Festivals are fun! Fun fun fun! Festivals make me happy!')">
-                    <div class="phrase-text">😊 Festivals are fun!</div>
+                <div class="phrase-card" onclick="sayFunnyPhrase('Look at that funny mask!', 'Look at that funny mask! Hahaha! It is so silly! 🤪🎭')">
+                    <div class="phrase-text">🎭 Look at that funny mask! <span class="wiggle-emoji">🤪</span></div>
                 </div>
-                <div class="phrase-card" onclick="sayPhrase('Look at the mask!', 'Look at the mask! It is scary! Wow! Look at the mask!')">
-                    <div class="phrase-text">🎭 Look at the mask!</div>
+                <div class="phrase-card" onclick="sayFunnyPhrase('Tomato on my nose!', 'Tomato on my nose! Squish squash! So messy! 🍅👃')">
+                    <div class="phrase-text">🍅 Tomato on my nose! <span class="bounce-emoji">👃</span></div>
                 </div>
-                <div class="phrase-card" onclick="sayPhrase('I hear bells!', 'I hear bells! Ding dong! I hear loud bells!')">
-                    <div class="phrase-text">🔔 I hear bells!</div>
+                <div class="phrase-card" onclick="sayFunnyPhrase('Dancing like a monkey!', 'Dancing like a monkey! Ooh ooh ah ah! Watch me dance! 🐒💃')">
+                    <div class="phrase-text">🐒 Dancing like a monkey! <span class="float-emoji">🐒</span></div>
                 </div>
-                <div class="phrase-card" onclick="sayPhrase('What a beautiful flower!', 'What a beautiful flower! So colorful! I like flowers!')">
-                    <div class="phrase-text">🌸 What a beautiful flower!</div>
-                </div>
-                <div class="phrase-card" onclick="sayPhrase('Let\'s dance!', 'Let\'s dance! Dance dance dance! Move your body!')">
-                    <div class="phrase-text">💃 Let's dance!</div>
-                </div>
-                <div class="phrase-card" onclick="sayPhrase('Happy festival!', 'Happy festival! Happy festival to everyone! Let\'s celebrate!')">
-                    <div class="phrase-text">🎉 Happy festival!</div>
+                <div class="phrase-card" onclick="sayFunnyPhrase('Happy festival everyone!', 'Happy festival everyone! Let\'s eat cake! Yummy! 🎂🎉')">
+                    <div class="phrase-text">🎉 Happy festival everyone! <span class="spin-emoji">🎂</span></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Exercise 5: Tongue Twisters about Festivals -->
+    <!-- Exercise 5: Silly Tongue Twisters -->
     <div class="exercise-card" id="exercise5">
         <div class="exercise-header">
             <div class="exercise-number">5</div>
-            <div class="exercise-title">🌀 Festival Tongue Twisters (Скороговорки)</div>
-            <div class="sound-icon" onclick="speak(tongueTwisters[currentTongueIndex].sound)">🔊</div>
+            <div class="exercise-title">😜 Silly Festival Tongue Twisters 😜</div>
+            <div class="sound-icon" onclick="speak(sillyTwisters[currentTongueIndex].sound)">🔊</div>
         </div>
         <div class="exercise-content">
             <div class="tongue-box">
-                <div class="tongue-text" id="tongueText">🎵 Festivals are fun for everyone! 🎵</div>
+                <div class="tongue-text" id="tongueText">🐒 Funny monkeys make music at the festival! 🎵</div>
                 <div>
-                    <button class="repeat-btn" onclick="sayTongueTwister(currentTongueIndex)">🔊 Listen</button>
-                    <button class="repeat-btn" onclick="nextTongueTwister()">➡️ Next</button>
+                    <button class="repeat-btn" onclick="saySillyTwister(currentTongueIndex)">🔊 Listen & Laugh</button>
+                    <button class="repeat-btn" onclick="nextSillyTwister()">➡️ Next Silly One</button>
                 </div>
             </div>
-            <p style="text-align: center; font-size: 0.9rem;">✨ Say each tongue twister 3 times fast! ✨</p>
+            <p style="text-align: center; font-size: 0.9rem;">✨ Say each twister 3 times fast with a big smile! ✨</p>
         </div>
     </div>
 
-    <!-- Exercise 6: Lip Exercises with Festival Theme -->
+    <!-- Exercise 6: Funny Face Exercises -->
     <div class="exercise-card" id="exercise6">
         <div class="exercise-header">
             <div class="exercise-number">6</div>
-            <div class="exercise-title">👅 Articulation for Festival Words</div>
-            <div class="sound-icon" onclick="speak('Let's exercise our lips and tongue for festival words!')">🔊</div>
+            <div class="exercise-title">🤪 Make Funny Faces for Festival Words! 🤪</div>
+            <div class="sound-icon" onclick="speak('Let's make funny faces while practicing festival words!')">🔊</div>
         </div>
         <div class="exercise-content">
             <div class="lip-exercise">
-                <div class="lip-card" onclick="doLipExercise('smile', 'Ee ee ee! Smile like at a happy festival! Say Festival!')">
-                    <div class="lip-emoji">😁</div>
-                    <div class="lip-sound">Fes - ti - val</div>
-                    <div class="lip-word">Festival!</div>
+                <div class="lip-card" onclick="makeFunnyFace('smile', '😁 Big smile! Say Festival! Feees-tii-val! 😁')">
+                    <div class="lip-emoji">😁➡️😆➡️😄</div>
+                    <div class="lip-sound">Fes - ti - val!</div>
+                    <div class="lip-word">Big Smile Festival!</div>
                 </div>
-                <div class="lip-card" onclick="doLipExercise('kiss', 'Oo oo oo! Round lips like a mask! Say Mask!')">
-                    <div class="lip-emoji">😗</div>
-                    <div class="lip-sound">Maa - sk</div>
-                    <div class="lip-word">Mask!</div>
+                <div class="lip-card" onclick="makeFunnyFace('fish', '🐟 Fish face! Pucker up! Say Mask! Maa-aa-sk 🎭')">
+                    <div class="lip-emoji">🐟👄</div>
+                    <div class="lip-sound">Maa - sk!</div>
+                    <div class="lip-word">Fish Face Mask!</div>
                 </div>
-                <div class="lip-card" onclick="doLipExercise('tongue', 'La la la! Tongue up for Tomato! Say Tomato!')">
-                    <div class="lip-emoji">👅</div>
-                    <div class="lip-sound">To - ma - to</div>
-                    <div class="lip-word">Tomato! 🍅</div>
+                <div class="lip-card" onclick="makeFunnyFace('tongue', '👅 Tongue out! Say Tomato! Ta-ma-to! 🍅')">
+                    <div class="lip-emoji">😛👅</div>
+                    <div class="lip-sound">To - ma - to!</div>
+                    <div class="lip-word">Tongue Out Tomato!</div>
                 </div>
-                <div class="lip-card" onclick="doLipExercise('blow', 'Puh puh puh! Blow like a parade! Say Parade!')">
-                    <div class="lip-emoji">💨</div>
-                    <div class="lip-sound">Pa - rade</div>
-                    <div class="lip-word">Parade! 🎺</div>
+                <div class="lip-card" onclick="makeFunnyFace('monkey', '🐒 Monkey face! Ooh ooh! Say Parade! Pa-rade! 🎺')">
+                    <div class="lip-emoji">🐒🙊</div>
+                    <div class="lip-sound">Pa - rade!</div>
+                    <div class="lip-word">Monkey Parade!</div>
                 </div>
-                <div class="lip-card" onclick="doLipExercise('vibrate', 'Brrr brrr! Vibrate like bells! Say Bells!')">
-                    <div class="lip-emoji">🎵</div>
-                    <div class="lip-sound">Bells!</div>
-                    <div class="lip-word">Bells! 🔔</div>
+                <div class="lip-card" onclick="makeFunnyFace('crazy', '🤪 Crazy eyes! Say Celebration! Cele-bra-tion! 🎉')">
+                    <div class="lip-emoji">🤪🌀</div>
+                    <div class="lip-sound">Cele - bra - tion!</div>
+                    <div class="lip-word">Crazy Celebration!</div>
                 </div>
-                <div class="lip-card" onclick="doLipExercise('click', 'Click click click! Say Celebration! Click!')">
-                    <div class="lip-emoji">👅💥</div>
-                    <div class="lip-sound">Cele - bra - tion</div>
-                    <div class="lip-word">Celebration! 🎉</div>
+                <div class="lip-card" onclick="makeFunnyFace('surprise', '😲 Surprise face! Say Wow! WOW Festival! 🎊')">
+                    <div class="lip-emoji">😲➡️😮➡️😯</div>
+                    <div class="lip-sound">WOW!</div>
+                    <div class="lip-word">Surprise Festival!</div>
                 </div>
             </div>
         </div>
@@ -591,30 +734,36 @@
     <div class="exercise-card">
         <div class="progress-container">
             <div class="progress-label">
-                <span>🎯 Warm-up Progress (6 exercises)</span>
+                <span>🎯 Warm-up Progress (6 funny exercises)</span>
                 <span id="progressPercent">0%</span>
             </div>
             <div class="progress-bar-bg">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
         </div>
-        <button class="complete-btn" id="completeBtn">✅ Ready for Festivals! ✅</button>
+        <button class="complete-btn" id="completeBtn">✅ Ready for Festivals! 🎉 ✅</button>
     </div>
 
     <!-- Celebration + Transition to Festivals -->
     <div id="celebration" class="celebration hidden">
-        <h2>🎉 Amazing Job! 🎉</h2>
-        <p>You practiced festival words and phrases!</p>
-        <p>🌟 Your mouth is ready to learn about <strong>FESTIVALS AROUND THE WORLD</strong>! 🌟</p>
+        <h2>🎉 Amazing Funny Job! 🎉</h2>
+        <div style="font-size: 3rem; margin: 15px;">
+            <span class="float-emoji">🎭</span>
+            <span class="spin-emoji">🎪</span>
+            <span class="bounce-emoji">🎉</span>
+            <span class="wiggle-emoji">🍅</span>
+            <span class="float-emoji">🎵</span>
+        </div>
+        <p>You made funny faces and practiced festival words!</p>
+        <p>🌟 Your mouth is SUPER ready to learn about <strong>FESTIVALS AROUND THE WORLD</strong>! 🌟</p>
         
-        <!-- FESTIVAL TEASER / TRANSITION -->
         <div class="festival-teaser">
-            <h3>🎭 Are you ready to travel? 🌎</h3>
-            <p>Today we will visit <strong>3 amazing festivals</strong>:</p>
+            <h3>🎭 Ready for a FUNNY festival trip? 🌎</h3>
+            <p>Let's visit <strong>3 amazing festivals</strong> with silly characters!</p>
             <div class="festival-buttons">
-                <div class="festival-btn" onclick="showFestival('bulgaria')">🇧🇬 Kukeri (Bulgaria)</div>
-                <div class="festival-btn" onclick="showFestival('mexico')">🇲🇽 Day of the Dead (Mexico)</div>
-                <div class="festival-btn" onclick="showFestival('spain')">🇪🇸 La Tomatina (Spain)</div>
+                <div class="festival-btn" onclick="showFestival('bulgaria')">🇧🇬 Kukeri 🤪🎭</div>
+                <div class="festival-btn" onclick="showFestival('mexico')">🇲🇽 Day of the Dead 💀🌼</div>
+                <div class="festival-btn" onclick="showFestival('spain')">🇪🇸 La Tomatina 🍅💥</div>
             </div>
             <p style="margin-top: 20px; font-size: 0.9rem;">👉 Click on any festival to start the main lesson! 👈</p>
         </div>
@@ -630,131 +779,8 @@
     };
     
     let currentTongueIndex = 0;
-    const tongueTwisters = [
-        { text: "🎵 Festivals are fun for everyone! 🎵", sound: "Festivals are fun for everyone. Festivals are fun!" },
-        { text: "🎭 Many masks make music at midnight 🎭", sound: "Many masks make music at midnight. Many masks." },
-        { text: "🍅 Ten tomatoes tossed in the town 🍅", sound: "Ten tomatoes tossed in the town. Ten tomatoes." },
-        { text: "🔔 Big bells bring big blessings 🔔", sound: "Big bells bring big blessings. Big bells." },
-        { text: "💃 Dancing dolls dance during December 💃", sound: "Dancing dolls dance during December. Dancing dolls." },
-        { text: "🌼 Fresh flowers for the festival 🌼", sound: "Fresh flowers for the festival. Fresh flowers." },
-        { text: "🎉 Happy holiday, happy heart 🎉", sound: "Happy holiday, happy heart. Happy holiday!" },
-        { text: "🎪 People play and party at the parade 🎪", sound: "People play and party at the parade. People play!" }
-    ];
-    
-    function speak(text) {
-        if ('speechSynthesis' in window) {
-            window.speechSynthesis.cancel();
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'en-US';
-            utterance.rate = 0.8;
-            utterance.pitch = 1.1;
-            window.speechSynthesis.speak(utterance);
-        }
-    }
-    
-    function saySound(letter, word, sound, phrase, festivalWord) {
-        speak(`${letter} says ${sound}. ${letter} for ${word}. ${phrase}. ${sound} ${sound} ${sound}. ${festivalWord}!`);
-        markExerciseComplete('exercise2');
-    }
-    
-    function sayFestivalWord(word, text, pronunciation, example) {
-        speak(`${word}! ${pronunciation}. ${example} Say ${word} three times! ${word}! ${word}! ${word}!`);
-        markExerciseComplete('exercise3');
-    }
-    
-    function sayPhrase(phrase, fullText) {
-        speak(fullText || phrase);
-        markExerciseComplete('exercise4');
-    }
-    
-    function doLipExercise(type, text) {
-        speak(text);
-        markExerciseComplete('exercise6');
-    }
-    
-    function startBreathing() {
-        const circle = document.getElementById('breathingCircle');
-        circle.classList.add('animate-breathe');
-        speak('Breathe in slowly for the festival... 1, 2, 3, 4. And breathe out... 1, 2, 3, 4, 5, 6. You are ready for festivals!');
-        setTimeout(() => {
-            circle.classList.remove('animate-breathe');
-        }, 8000);
-        markExerciseComplete('exercise1');
-    }
-    
-    function sayTongueTwister(index) {
-        speak(tongueTwisters[index].sound);
-    }
-    
-    function nextTongueTwister() {
-        currentTongueIndex = (currentTongueIndex + 1) % tongueTwisters.length;
-        document.getElementById('tongueText').textContent = tongueTwisters[currentTongueIndex].text;
-        speak(tongueTwisters[currentTongueIndex].sound);
-        markExerciseComplete('exercise5');
-    }
-    
-    function markExerciseComplete(exerciseId) {
-        if (!completed[exerciseId]) {
-            completed[exerciseId] = true;
-            updateProgress();
-            const card = document.getElementById(exerciseId);
-            const header = card.querySelector('.exercise-header');
-            if (!header.querySelector('.checkmark')) {
-                const checkmark = document.createElement('div');
-                checkmark.textContent = '✅';
-                checkmark.classList.add('checkmark');
-                header.appendChild(checkmark);
-            }
-        }
-    }
-    
-    function updateProgress() {
-        const total = Object.keys(completed).length;
-        let done = 0;
-        for (let key in completed) if (completed[key]) done++;
-        const percent = Math.round((done / total) * 100);
-        document.getElementById('progressPercent').textContent = `${percent}%`;
-        document.getElementById('progressFill').style.width = `${percent}%`;
-    }
-    
-    function completeWarmUp() {
-        let done = 0, total = Object.keys(completed).length;
-        for (let key in completed) if (completed[key]) done++;
-        
-        if (done === total) {
-            speak('Congratulations! You completed all exercises! Now you are ready to learn about festivals around the world!');
-            document.getElementById('celebration').classList.remove('hidden');
-            document.querySelector('.complete-btn').disabled = true;
-        } else {
-            speak(`You have ${total - done} exercises left. Keep practicing festival words!`);
-            alert(`🎯 You completed ${done} out of ${total} exercises.\n\nComplete all exercises to start the festival lesson!`);
-        }
-    }
-    
-    function showFestival(country) {
-        let message = '';
-        if (country === 'bulgaria') {
-            message = 'Great! You chose Bulgaria and the Kukeri Festival. Men wear scary masks and bells to scare away bad spirits!';
-        } else if (country === 'mexico') {
-            message = 'Wonderful! Day of the Dead in Mexico is a happy celebration. Families make altars with flowers and food for their ancestors!';
-        } else if (country === 'spain') {
-            message = 'Amazing! La Tomatina in Spain is a giant tomato fight! People throw tomatoes at each other just for fun!';
-        }
-        speak(message);
-        alert(`🎉 ${message}\n\nLet's continue with the main lesson!`);
-    }
-    
-    function closeCelebration() {
-        document.getElementById('celebration').classList.add('hidden');
-        alert('🎉 Great job! Now you are ready for the festival reading lesson! 🎉\n\nLet\'s learn about Kukeri, Day of the Dead, and La Tomatina!');
-    }
-    
-    document.getElementById('completeBtn').addEventListener('click', completeWarmUp);
-    updateProgress();
-    
-    setTimeout(() => {
-        speak('Hello! Welcome to the speech warm-up! Today we will learn about festivals around the world! Let\'s get our mouths ready!');
-    }, 500);
-</script>
-</body>
-</html>
+    const sillyTwisters = [
+        { text: "🐒 Funny monkeys make music at the festival! 🎵", sound: "Funny monkeys make music at the festival! Funny monkeys! Ooh ooh!" },
+        { text: "🎭 Silly Sally sells scary masks at the market 🎭", sound: "Silly Sally sells scary masks at the market! Silly Sally!" },
+        { text: "🍅 Ten ticklish tomatoes tumbled on the table 🍅", sound: "Ten ticklish tomatoes tumbled on the table! Hahaha!" },
+        { text: "🔔 Big
